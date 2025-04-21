@@ -12,8 +12,18 @@
     font-weight: bold;
 }
 
+#navBar {
+    position: relative;
+}
+
 .navbar-nav {
     font-size: 1.2rem;
+    position: absolute;
+    right: 0;
+}
+
+.navbar-nav li {
+    margin-left: 20px;
 }
 
 .navbar {
