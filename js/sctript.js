@@ -15,10 +15,10 @@ function validateName() {
     const name = document.getElementById("nameSignIn").value;
     const message1 = document.getElementById("message1");
     if (checkName(name)) {
-        message1.textContent = "✔ Tên hợp lệ 😊";
+        message1.textContent = "✔ Tên hợp lệ ";
         message1.style.color = "green";
     } else {
-        message1.textContent = "✖ Tên không hợp lệ ☹️";
+        message1.textContent = "✖ Tên không hợp lệ ";
         message1.style.color = "red";
     }
 }
@@ -30,10 +30,10 @@ function validateEmail() {
     const email = document.getElementById("emailSignIn").value;
     const message3 = document.getElementById("message3");
     if (checkEmail(email)) {
-        message3.textContent = "✔ Email hợp lệ 😊";
+        message3.textContent = "✔ Email hợp lệ ";
         message3.style.color = "green";
     } else {
-        message3.textContent = "✖ Email không hợp lệ ☹️";
+        message3.textContent = "✖ Email không hợp lệ ";
         message3.style.color = "red";
     }
 }
@@ -68,10 +68,10 @@ function validateSignUpName() {
     const name = document.getElementById("nameSignUp").value;
     const message1 = document.getElementById("messageSignUp1");
     if (checkName(name)) {
-        message1.textContent = "✔ Tên hợp lệ 😊";
+        message1.textContent = "✔ Tên hợp lệ ";
         message1.style.color = "green";
     } else {
-        message1.textContent = "✖ Tên không hợp lệ ☹️";
+        message1.textContent = "✖ Tên không hợp lệ ";
         message1.style.color = "red";
     }
 }
@@ -80,10 +80,10 @@ function validateSignUpPhone() {
     const phone = document.getElementById("phoneSignUp").value;
     const message2 = document.getElementById("messageSignUp2");
     if (checkPhone(phone)) {
-        message2.textContent = "✔ Số điện thoại hợp lệ 😊";
+        message2.textContent = "✔ Số điện thoại hợp lệ ";
         message2.style.color = "green";
     } else {
-        message2.textContent = "✖ Số điện thoại không hợp lệ ☹️";
+        message2.textContent = "✖ Số điện thoại không hợp lệ ";
         message2.style.color = "red";
     }
 }
@@ -93,10 +93,10 @@ function validateSignUpEmail() {
     const email = document.getElementById("emailSignUp").value;
     const message3 = document.getElementById("messageSignUp3");
     if (checkEmail(email)) {
-        message3.textContent = "✔ Email hợp lệ 😊";
+        message3.textContent = "✔ Email hợp lệ ";
         message3.style.color = "green";
     } else {
-        message3.textContent = "✖ Email không hợp lệ ☹️";
+        message3.textContent = "✖ Email không hợp lệ ";
         message3.style.color = "red";
     }
 }
