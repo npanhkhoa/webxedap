@@ -1,0 +1,190 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    max-height: 50px;
+    max-width: 50px;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    font-size: 1.2rem;
+}
+
+.navbar {
+    max-height: 390px;
+    position: fixed;
+}
+
+.bi {
+    color: white;
+    font-size: 20px;
+}
+
+.bi:hover {
+    color: cadetblue;
+}
+
+.scroll-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 10s linear infinite;
+}
+
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    padding: 10px 0;
+}
+
+
+/* Card */
+
+.card .bi {
+    color: black;
+}
+
+.card .bi:hover {
+    color: red;
+}
+
+.card p,
+.card button,
+.card .card-title {
+    font-size: clamp(20px, 2vw, 25px);
+}
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* Search box */
+
+.search-box {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+}
+
+@media (max-width:992px) {
+    .search-box {
+        position: fixed;
+        top: 0;
+        left: 25%;
+        right: auto;
+        width: 70%;
+        z-index: 3000;
+        width: 70%;
+    }
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-box .btn {
+    height: 40px;
+    width: 130px;
+}
+
+#searchBox .btn {
+    font-size: clamp(13px, 2vw, 16px) !important;
+}
+
+
+/* Section */
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.price {
+    font-weight: bold;
+    color: rgb(169, 50, 50);
+}
+
+
+/* footer */
+
+#img-footer img {
+    width: 140px;
+}
+
+.about-us li a {
+    text-decoration: none;
+    color: black;
+}
+
+.about-us li {
+    margin-top: 5px;
+}
+
+.about-us li a:hover {
+    color: rgb(37, 11, 230);
+}
+
+.bi {
+    color: white;
+}
+
+.bi-facebook:hover {
+    color: blue;
+}
+
+.bi-youtube:hover {
+    color: red;
+}
+
+.bi-tiktok:hover {
+    color: #3581cd;
+}
+
+.bi-instagram:hover {
+    color: rgb(236, 10, 10);
+}
+
+footer .bi {
+    color: black;
+}
+
+
+/* Giỏ hàng */
+
+.offcanvas {
+    width: 50vw !important;
+}
+
+@media (max-width:992px) {
+    .offcanvas {
+        width: 90vw !important;
+    }
+}
+
+
+/* Thông báo giỏ hàng */
+
+#cart-notification {
+    z-index: 100001;
+}

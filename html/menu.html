@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="logo" rel="icon" href="../img/logo.png">
+    <title>Menu</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="position: sticky; top: 0; z-index: 1020;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../html/index.html">MVL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" role="button" aria-labelledby="toggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link " href="../html/index.html">Trang chủ</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Sản phẩm</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../html/menu.html" class=" dropdown-item">Xe thể thao</a></li>
+                            <li><a href="../html/menu.html" class=" dropdown-item">Xe địa hình</a></li>
+                            <li><a href="../html/menu.html" class=" dropdown-item">Xe thường</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link " href="#">Ưu đãi</a></li>
+                    <li class="nav-item"><a class="nav-link " href="#contact">Liên hệ</a></li>
+                    <li class="nav-item">
+                        <button class="btn me-2" onclick="handleUserClick()">
+                            <i class="bi bi-person"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn" onclick="toggleSearchBox(event)">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item"><button class="btn" data-bs-toggle="offcanvas" data-bs-target="#Id1" aria-controls="Id1"><i class=" bi bi-cart "></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Modal cho form Đăng nhập -->
+    <div class="modal fade" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="Sign In ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">Đăng nhập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form><label for="name" class="form-label">Tên đăng nhập:</label>
+                            <input type="text" name="name" id="nameSignIn" class="form-control" oninput="validateName()" placeholder="Nhập tên">
+                            <p class="mt-3" id="message1"></p>
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="text" name="email" id="emailSignIn" class="form-control" oninput="validateEmail()" placeholder="Nhập email">
+                            <p class="mt-3" id="message3"></p>
+                            <div class="mt-3"><a class="text-decoration-none" href="">Quên mật khẩu</a></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSignUp">Đăng ký</button></div>
+                    <div><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="checkInput()">Đăng nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal cho form Đăng ký -->
+    <div class="modal fade" id="modalSignUp" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog" role=" Sign Up">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">Đăng ký</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form><label for="name" class="form-label">Tên đăng ký:</label>
+                            <input type="text" name="name" id="nameSignUp" class="form-control" oninput="validateSignUpName()" placeholder="Nhập tên">
+                            <p class="mt-3" id="messageSignUp1"></p>
+
+                            <label for="phone" class="form-label">Số điện thoại:</label>
+                            <input type="text" name="phone" id="phoneSignUp" class="form-control" oninput="validateSignUpPhone()" placeholder="Nhập số điện thoại">
+                            <p class="mt-3" id="messageSignUp2"></p>
+
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="text" name="email" id="emailSignUp" class="form-control" oninput="validateSignUpEmail()" placeholder="Nhập email">
+                            <p class="mt-3" id="messageSignUp3"></p>
+                            <label for="address" class="form-label">Địa chỉ:</label>
+                            <input type="text" name="address" id="addressSignUp" class="form-control" required placeholder="Nhập địa chỉ">
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSignIn">Đăng nhập</button>
+                    </div>
+                    <div><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="checkSignUpInput()">Đăng
+                            ký</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mở rộng tìm kiếm -->
+    <div class="search-container">
+        <!-- Popup tìm kiếm -->
+        <div id="searchBox" class="search-box">
+            <div class="d-flex"><input type="text" id="search-input" class="search-input" placeholder="Tìm kiếm sản phẩm">
+                <button type="button" class="btn btn-outline-dark ms-2" id="btn-search" onclick="notificationSearch()">Tìm
+                    kiếm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Giỏ hàng -->
+
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="Id1" aria-labelledby="Enable both scrolling & backdrop">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="Enable both scrolling & backdrop">
+                Giỏ hàng
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Bảng giỏ hàng -->
+            <table id="cart-table" class="table table-bordered d-none">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items"></tbody>
+            </table>
+            <!-- Thông báo nếu giỏ hàng trống -->
+            <p id="cart-empty-message" class="text-center">Giỏ hàng trống</p>
+            <!-- Nút Thanh toán -->
+            <div id="checkout-container" class="d-none text-center mt-3">
+                <a href="../html/thanhtoan.html" id="checkout-btn" class="btn btn-outline-dark">Thanh toán</a>
+            </div>
+        </div>
+    </div>
+    <!-- Thẻ để hiển thị thông báo -->
+    <div id="cart-notification" class="alert alert-success position-fixed top-0 end-50 m-3 d-none" role="alert">
+        Sản phẩm đã được thêm vào giỏ hàng!
+    </div>
+
+
+    <!-- header -->
+    <header>
+        <!-- Carousel -->
+        <div class="container-fluid">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../img/banner 1.PNG" class="d-block w-100" alt="Slide 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/banner 2.PNG" class="d-block w-100" alt="Slide 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../image/banner3.jpg" class="d-block w-100" alt="Slide 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../image/banner4.jpg" class="d-block w-100" alt="Slide 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../image/banner5.jpg" class="d-block w-100" alt="Slide 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../image/banner6.jpg" class="d-block w-100" alt="Slide 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="container mt-5">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay1.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Pegasus 41 X Eliud Kipchoge</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,112,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Pegasus 41 X Eliud Kipchoge" data-price="2112179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay2.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Zoom Pegasus 40</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,912,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Zoom Pegasus 40" data-price="1912179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay3.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Revolution 6</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Revolution 6" data-price="2312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay4.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Zoom Fly 5</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,212,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Zoom Fly 5" data-price="3212179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay5.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Vaporfly Next 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,500,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Vaporfly Next 3" data-price="2500179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay6.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Alphafly 2</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,387,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Alphafly 2" data-price="2387179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay7.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Free Run 5.0</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Free Run 5.0" data-price="1312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay8.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Max 90</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">4,512,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Max 90" data-price="4512179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay9.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike React Infinity Run 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,412,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike React Infinity Run 3" data-price="3412179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay1.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Pegasus 41 X Eliud Kipchoge</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,112,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Pegasus 41 X Eliud Kipchoge" data-price="2112179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay2.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Zoom Pegasus 40</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,912,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Zoom Pegasus 40" data-price="1912179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay3.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Revolution 6</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Revolution 6" data-price="2312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay4.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Zoom Fly 5</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,212,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Zoom Fly 5" data-price="3212179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay5.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Vaporfly Next 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,500,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Vaporfly Next 3" data-price="2500179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay6.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Alphafly 2</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,387,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Alphafly 2" data-price="2387179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay7.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Free Run 5.0</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Free Run 5.0" data-price="1312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay8.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Max 90</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">4,512,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Max 90" data-price="4512179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay9.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike React Infinity Run 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,412,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike React Infinity Run 3" data-price="3412179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay1.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Pegasus 41 X Eliud Kipchoge</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,112,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Pegasus 41 X Eliud Kipchoge" data-price="2112179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay2.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Zoom Pegasus 40</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,912,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Zoom Pegasus 40" data-price="1912179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay3.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Revolution 6</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Revolution 6" data-price="2312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay4.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Zoom Fly 5</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,212,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Zoom Fly 5" data-price="3212179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay5.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Vaporfly Next 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,500,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Vaporfly Next 3" data-price="2500179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay6.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Alphafly 2</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,387,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Alphafly 2" data-price="2387179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay7.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Free Run 5.0</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Free Run 5.0" data-price="1312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay8.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Max 90</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">4,512,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Max 90" data-price="4512179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay9.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike React Infinity Run 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,412,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike React Infinity Run 3" data-price="3412179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay1.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Pegasus 41 X Eliud Kipchoge</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,112,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Pegasus 41 X Eliud Kipchoge" data-price="2112179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay2.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Zoom Pegasus 40</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,912,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Zoom Pegasus 40" data-price="1912179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay3.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Revolution 6</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Revolution 6" data-price="2312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay4.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Zoom Fly 5</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,212,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Zoom Fly 5" data-price="3212179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay5.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Vaporfly Next 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,500,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Vaporfly Next 3" data-price="2500179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay6.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Alphafly 2</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,387,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Alphafly 2" data-price="2387179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay7.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Free Run 5.0</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Free Run 5.0" data-price="1312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay8.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Max 90</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">4,512,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Max 90" data-price="4512179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay9.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike React Infinity Run 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,412,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike React Infinity Run 3" data-price="3412179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay1.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Pegasus 41 X Eliud Kipchoge</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,112,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Pegasus 41 X Eliud Kipchoge" data-price="2112179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay2.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Zoom Pegasus 40</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,912,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Zoom Pegasus 40" data-price="1912179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay3.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Revolution 6</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Revolution 6" data-price="2312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay4.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Zoom Fly 5</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,212,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Zoom Fly 5" data-price="3212179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay5.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Vaporfly Next 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,500,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Vaporfly Next 3" data-price="2500179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay6.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Alphafly 2</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">2,387,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Alphafly 2" data-price="2387179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay7.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Free Run 5.0</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">1,312,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Free Run 5.0" data-price="1312179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay8.webp" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike Air Max 90</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">4,512,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike Air Max 90" data-price="4512179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../image/giay9.jpg" alt="">
+                    <div class="card-title text-center">
+                        <b>Nike React Infinity Run 3</b>
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <p class="price text-center mt-auto">3,412,179₫</p>
+                        <i class="add-to-cart bi bi-cart" data-name="Nike React Infinity Run 3" data-price="3412179" title="Thêm vào giỏ"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a class="btn btn-outline-dark" href="../html/index.html">Trang chủ</a>
+        </div>
+    </section>
+
+    <div id="contact"></div>
+    <footer class="container-fluid mt-5">
+        <hr>
+        <div class="row ms-1 me-1">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column">
+                    <div id="img-footer"><img src="../img/logo.png" alt="logo"></div>
+                    <p>Hộ Kinh Doanh : 01E8027929
+                    </p>
+                    <p>MVL - Nhà sưu tầm và phân phối chính hãng các thương hiệu thời trang quốc tế hàng đầu Việt Nam</p>
+                    <h4>HỆ THỐNG CỬA HÀNG</h4>
+                    <p><i class="bi bi-telephone"></i>Hotline: 0123446547</p>
+                    <p><i class="bi bi-geo-alt"></i>36 Trưng Nữ Vương, Phường 1, Gò Vấp, Hồ Chí Minh, Việt Nam</p>
+                    <p><i class="bi bi-envelope"></i> service@mvlgamil.com</p>
+                    <p>ĐKKD: 01E8027929 - Cấp ngày: 01/06/2025 - Nơi cấp: Thành phố Hồ Chí Minh
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="d-flex flex-column">
+                    <div>
+                        <h5>Về chúng tôi</h5>
+                        <hr style="border: solid 2px rgb(147, 147, 146); max-width: 150px; border-radius: 2px;">
+                    </div>
+                    <ul class="list-unstyled about-us">
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Dịch vụ spa</a></li>
+                        <li><a href="#">Tin tức - Sự kiện</a></li>
+                    </ul>
+                    <h5>Kết nối với chúng tôi</h5>
+                    <hr style="border: solid 2px rgb(147, 147, 146); max-width: 250px; border-radius: 2px;">
+                    <div>
+                        <button class="btn"><i class="bi bi-facebook"></i></button>
+                        <button class="btn"><i class="bi bi-youtube"></i></button>
+                        <button class="btn"><i class="bi bi-tiktok"></i></button>
+                        <button class="btn"><i class="bi bi-instagram"></i></button>
+                        <button class="btn"><i class="bi bi-twitter"></i></button>
+                    </div>
+                    <div class="mt-2"><img style="width: 120px;" src="../img/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png" alt="logo-da-thong-bao-bo-cong-thuong-mau-xanh">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="d-flex flex-column">
+                    <div>
+                        <h5>Hỗ trợ khách hàng</h5>
+                        <hr style="border: solid 2px rgb(147, 147, 146); max-width: 250px; border-radius: 2px;">
+                    </div>
+                    <ul class="list-unstyled about-us">
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả và bảo hành</a></li>
+                        <li><a href="#">Chính sách thanh toán</a></li>
+                        <li><a href="#">Điều khoản trang web</a></li>
+                        <li><a href="#">Chính sách bảo vệ thông tin cá nhân của người tiêu dùng</a></li>
+                        <li><a href="#">Vận chuyển và giao hàng</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class=" d-flex justify-content-center align-items-center w-100 bg-dark text-white" style="height: 70px;">
+            <p class="m-0">© Bản quyền thuộc về MVL</p>
+        </div>
+    </footer>
+    <!-- Template ẩn dùng để reset lại form login -->
+    <div id="loginFormTemplate" style="display: none;">
+        <label for="nameSignIn" class="form-label">Tên đăng nhập:</label>
+        <input type="text" id="nameSignIn" class="form-control" placeholder="Nhập tên">
+        <span id="message1"></span><br>
+        <label for="emailSignIn" class="form-label">Email:</label>
+        <input type="email" id="emailSignIn" class="form-control" placeholder="Email">
+        <span id="message3"></span><br>
+    </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/sctript.js"></script>
+</body>
+
+</html>

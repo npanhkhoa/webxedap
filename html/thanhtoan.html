@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán</title>
+    <link id="logo" rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/thanhtoan.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="position: sticky; top: 0; z-index: 1020;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../html/index.html">MVL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" role="button" aria-labelledby="toggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link " href="../html/index.html">Trang chủ</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Sản
+                            phẩm</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../html/menu.html" class=" dropdown-item">Xe thể thao</a></li>
+                            <li><a href="../html/menu.html" class=" dropdown-item">Xe địa hình</a></li>
+                            <li><a href="../html/menu.html" class=" dropdown-item">Xe thường</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link " href="#">Ưu đãi</a></li>
+                    <li class="nav-item"><a class="nav-link " href="#">Liên hệ</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="d-flex flex-column align-items-center">
+            <img id="logo-thanhToan" src="../image/thanhtoan-Photoroom.png" alt="thanh-toan">
+            <h3>Thanh toán</h3>
+            <p>Vui lòng kiểm tra thông tin Khách hàng, thông tin Giỏ hàng trước khi đặt hàng.</p>
+        </header>
+        <section>
+            <div class="row row-cols-1 row-cols-md-3 g-3 mt-4">
+                <div class="col">
+                    <h4>Thông tin mua hàng</h4>
+                    <form id="form-infor">
+                        <label for="name" class="form-label">Họ và tên người nhận: </label>
+                        <input class="form-control" type="text" name="name" id="name" oninput="validateName()" placeholder="Nhập họ và tên" required>
+                        <p class="mt-3" id="messageCheckName"></p>
+                        <label for="phone" class="form-label">Số điện thoại người nhận:</label>
+                        <input class="form-control" type="text" name="phone" id="phone" oninput="validatePhone()" placeholder="Nhập số điện thoại" required>
+                        <p class="mt-3" id="messageCheckPhone"></p>
+                        <label for="address" class="form-label">Địa chỉ nhận: </label>
+                        <input class="form-control" type="text" name="address" id="address" placeholder="Nhập địa chỉ" required>
+                        <label for="note" class="form-label">Ghi chú:</label>
+                        <textarea class="form-control" name="note" id="note" placeholder="Không bắt buộc"></textarea>
+                    </form>
+                    <h4>Hình thức giao hàng</h4>
+                    <form id="form-giao-hang">
+                        <input class="form-check-inline " type="radio" name="phuongThuc" id="nhanh" required>Nhanh
+                        <br>
+                        <input class="form-check-inline" type="radio" name="phuongThuc" id="sieu-toc">Siêu tốc (Phí 24.000đ)
+                    </form>
+                </div>
+                <div class="col">
+                    <h4>Chọn phương thức thanh toán</h4>
+                    <div id="box-banking">
+                        <form>
+                            <div>
+                                <input class="form-check-inline" type="radio" name="thanhToan" id="ngan-hang" required>Thanh toán qua Ngân hàng
+                            </div>
+                            <div><input class="form-check-inline" type="radio" name="thanhToan" id="momo">Thanh toán qua Momo
+                            </div>
+                            <div><input class="form-check-inline" type="radio" name="thanhToan" id="visa">Thanh toán qua Visa
+                            </div>
+                            <div><input class="form-check-inline" type="radio" name="thanhToan" id="pay-pal">Thanh toán qua Paypal
+                            </div>
+                            <div><input class="form-check-inline" type="radio" name="thanhToan" id="zalo-pay">Thanh toán qua ZaloPay
+                            </div>
+                            <div><input class="form-check-inline" type="radio" name="thanhToan" id="web-money">Thanh toán qua Webmoney
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col">
+                    <h4>Giỏ hàng</h4>
+                    <div id="cart-items"></div>
+                    <p><strong>Tổng thành tiền:</strong> <span id="total-price">0</span> VND</p>
+                    <button type="button" class="btn btn-primary w-100" onclick="checkInfor()">Thanh toán</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="container-fluid mt-5">
+        <hr>
+        <div class="row ms-1 me-1">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column">
+                    <div id="img-footer"><img src="../image/logo.png" alt="logo"></div>
+                    <p>Hộ Kinh Doanh : 01E8027929
+                    </p>
+                    <p>MVL - Nhà sưu tầm và phân phối chính hãng các thương hiệu thời trang quốc tế hàng đầu Việt Nam</p>
+                    <h4>HỆ THỐNG CỬA HÀNG</h4>
+                    <p><i class="bi bi-telephone"></i>Hotline: 0123446547</p>
+                    <p><i class="bi bi-geo-alt"></i>36 Trưng Nữ Vương, Phường 1, Gò Vấp, Hồ Chí Minh, Việt Nam</p>
+                    <p><i class="bi bi-envelope"></i> service@mvlgamil.com</p>
+                    <p>ĐKKD: 01E8027929 - Cấp ngày: 01/06/2025 - Nơi cấp: Thành phố Hồ Chí Minh
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="d-flex flex-column">
+                    <div>
+                        <h5>Về chúng tôi</h5>
+                        <hr style="border: solid 2px rgb(147, 147, 146); max-width: 150px; border-radius: 2px;">
+                    </div>
+                    <ul class="list-unstyled about-us">
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Dịch vụ spa</a></li>
+                        <li><a href="#">Tin tức - Sự kiện</a></li>
+                    </ul>
+                    <h5>Kết nối với chúng tôi</h5>
+                    <hr style="border: solid 2px rgb(147, 147, 146); max-width: 250px; border-radius: 2px;">
+                    <div>
+                        <button class="btn"><i class="bi bi-facebook"></i></button>
+                        <button class="btn"><i class="bi bi-youtube"></i></button>
+                        <button class="btn"><i class="bi bi-tiktok"></i></button>
+                        <button class="btn"><i class="bi bi-instagram"></i></button>
+                        <button class="btn"><i class="bi bi-twitter"></i></button>
+                    </div>
+                    <div class="mt-2"><img style="width: 120px;" src="../img/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png" alt="logo-da-thong-bao-bo-cong-thuong-mau-xanh">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="d-flex flex-column">
+                    <div>
+                        <h5>Hỗ trợ khách hàng</h5>
+                        <hr style="border: solid 2px rgb(147, 147, 146); max-width: 250px; border-radius: 2px;">
+                    </div>
+                    <ul class="list-unstyled about-us">
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả và bảo hành</a></li>
+                        <li><a href="#">Chính sách thanh toán</a></li>
+                        <li><a href="#">Điều khoản trang web</a></li>
+                        <li><a href="#">Chính sách bảo vệ thông tin cá nhân của người tiêu dùng</a></li>
+                        <li><a href="#">Vận chuyển và giao hàng</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class=" d-flex justify-content-center align-items-center w-100 bg-dark text-white" style="height: 70px;">
+            <p class="m-0">© Bản quyền thuộc về MVL</p>
+        </div>
+    </footer>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/sctript.js"></script>
+    <script src="../js/thanhtoan.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof displayCartOnCheckoutPage === "function") {
+                displayCartOnCheckoutPage();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
