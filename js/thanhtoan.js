@@ -1,5 +1,5 @@
 function checkName(name) {
-    return /^[A-Za-zÀ-Ỹà-ỹ\s]+$/.test(name.trim());
+    return /^([A-ZÀ-Ỹ][a-zà-ỹ]+)(\s[A-ZÀ-Ỹ][a-zà-ỹ]+)+$/.test(name);
 }
 
 function checkPhone(phone) {
