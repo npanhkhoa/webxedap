@@ -60,7 +60,7 @@ function checkInfor() {
         alert("Vui lòng nhập và chọn đầy đủ thông tin !")
         return false;
     } else {
-        alert("Chức năng thanh toán sẽ sớm được hoàn thiện! Xin lỗi vì sự bất tiện này.");
+        alert("Chức năng thanh toán sẽ sớm được hoàn thiện!");
         reset();
     }
 }
