@@ -41,7 +41,7 @@
         <header class="d-flex flex-column align-items-center">
             <img id="logo-thanhToan" src="../img/thanhtoan-Photoroom.png" alt="thanh-toan">
             <h3>Thanh toán</h3>
-            <p>Vui lòng kiểm tra thông tin Khách hàng, thông tin Giỏ hàng trước khi đặt hàng.</p>
+            <p>Vui lòng khách hàng kiểm tra thông tin giỏ hàng trước khi đặt hàng.</p>
         </header>
         <section>
             <div class="row row-cols-1 row-cols-md-3 g-3 mt-4">
@@ -59,12 +59,7 @@
                         <label for="note" class="form-label">Ghi chú:</label>
                         <textarea class="form-control" name="note" id="note" placeholder="Không bắt buộc"></textarea>
                     </form>
-                    <h4>Hình thức giao hàng</h4>
-                    <form id="form-giao-hang">
-                        <input class="form-check-inline " type="radio" name="phuongThuc" id="nhanh" required>Nhanh
-                        <br>
-                        <input class="form-check-inline" type="radio" name="phuongThuc" id="sieu-toc">Siêu tốc
-                    </form>
+
                 </div>
                 <div class="col">
                     <h4>Chọn phương thức thanh toán</h4>
@@ -81,7 +76,7 @@
                             </div>
                             <div><input class="form-check-inline" type="radio" name="thanhToan" id="zalo-pay">Thanh toán qua ZaloPay
                             </div>
-                            <div><input class="form-check-inline" type="radio" name="thanhToan" id="web-money">Thanh toán qua Webmoney
+                            <div><input class="form-check-inline" type="radio" name="thanhToan" id="tien-mat">Thanh toán bằng tiền mặt
                             </div>
                         </form>
                     </div>
@@ -95,70 +90,7 @@
             </div>
         </section>
     </div>
-    <footer class="container-fluid mt-5">
-        <hr>
-        <div class="row ms-1 me-1">
-            <div class="col-12 col-md-6">
-                <div class="d-flex flex-column">
-                    <div id="img-footer"><img src="../img/logo.png" alt="logo"></div>
-                    <p>Hộ Kinh Doanh : 0A12345632
-                    </p>
-                    <p>BYC - Nhà phân phối chính hãng các thương hiệu xe đạp hàng đầu Việt Nam</p>
-                    <h4>HỆ THỐNG CỬA HÀNG</h4>
-                    <p><i class="bi bi-telephone"></i>Hotline: 0896420525</p>
-                    <p><i class="bi bi-geo-alt"></i>122 Tên Lửa, Phường Bình Trị Đông B, Quận Bình Tân, TP. Hồ Chí Minh</p>
-                    <p><i class="bi bi-envelope"></i> service@bycgamil.com</p>
-                    <p>ĐKKD: 0A12345632 - Cấp ngày: 21/06/2025 - Nơi cấp: Thành phố Hồ Chí Minh
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="d-flex flex-column">
-                    <div>
-                        <h5>Về chúng tôi</h5>
-                        <hr style="border: solid 2px rgb(147, 147, 146); max-width: 150px; border-radius: 2px;">
-                    </div>
-                    <ul class="list-unstyled about-us">
-                        <li><a href="#">Giới thiệu</a></li>
-                        <li><a href="#">Tuyển dụng</a></li>
-                        <li><a href="#">Dịch vụ spa</a></li>
-                        <li><a href="#">Tin tức - Sự kiện</a></li>
-                    </ul>
-                    <h5>Kết nối với chúng tôi</h5>
-                    <hr style="border: solid 2px rgb(147, 147, 146); max-width: 250px; border-radius: 2px;">
-                    <div>
-                        <button class="btn"><i class="bi bi-facebook"></i></button>
-                        <button class="btn"><i class="bi bi-youtube"></i></button>
-                        <button class="btn"><i class="bi bi-tiktok"></i></button>
-                        <button class="btn"><i class="bi bi-instagram"></i></button>
-                        <button class="btn"><i class="bi bi-twitter"></i></button>
-                    </div>
-                    <div class="mt-2"><img style="width: 120px;" src="../img/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png" alt="logo-da-thong-bao-bo-cong-thuong-mau-xanh">
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="d-flex flex-column">
-                    <div>
-                        <h5>Hỗ trợ khách hàng</h5>
-                        <hr style="border: solid 2px rgb(147, 147, 146); max-width: 250px; border-radius: 2px;">
-                    </div>
-                    <ul class="list-unstyled about-us">
-                        <li><a href="#">Hướng dẫn mua hàng</a></li>
-                        <li><a href="#">Chính sách đổi trả và bảo hành</a></li>
-                        <li><a href="#">Chính sách thanh toán</a></li>
-                        <li><a href="#">Điều khoản trang web</a></li>
-                        <li><a href="#">Chính sách bảo vệ thông tin cá nhân của người tiêu dùng</a></li>
-                        <li><a href="#">Vận chuyển và giao hàng</a></li>
 
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class=" d-flex justify-content-center align-items-center w-100 bg-dark text-white" style="height: 70px;">
-            <p class="m-0">© Bản quyền thuộc về BYC</p>
-        </div>
-    </footer>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/sctript.js"></script>
